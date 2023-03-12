@@ -1,0 +1,17 @@
+body{
+    background-color: green;
+}
+
+button{
+    border: 1px solid white;
+}
+
+h1{
+    color: whitesmoke;
+}
+
+img{
+    position: absolute;
+    top: 300px;
+    left: 45%;
+}

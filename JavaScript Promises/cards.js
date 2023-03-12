@@ -6,22 +6,10 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
 
-function drawCard(){
-    return new Promise((resolve, reject) =>{
-        axios.get(deckUrl + `${deckId}/draw/?count=1`)
-        .then(res => {
-            resolve(res.data)
-        })
-        .catch(err => {
-            reject(err)
-        })
-    })
-}
-
 $(".drawCard").on("click", function(){
     axios.get(deckUrl + `${deckId}/draw/?count=1`)
         .then(res => {
-            console.log(res);
+            console.log(res.data.cards[0].value + " of " + res.data.cards[0].suit)
             $(".card-content").append(` 
             <img src="${res.data.cards[0].image}" style="transform: rotate(${getRandomInt(360)}deg)"/>
             `)
@@ -31,6 +19,20 @@ $(".drawCard").on("click", function(){
         })
     
 })
+
+$(".drawCards").on("click", async function(){
+    axios.get(deckUrl + `${deckId}/draw/?count=1`)
+        .then(res => {
+            console.log(res.data.cards[0].value + " of " + res.data.cards[0].suit)
+            return axios.get(deckUrl + `${deckId}/draw/?count=1`)
+        })
+        .then(res => {
+            console.log(res.data.cards[0].value + " of " + res.data.cards[0].suit)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+});
 
 
 
