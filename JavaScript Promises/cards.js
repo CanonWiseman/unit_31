@@ -20,7 +20,7 @@ $(".drawCard").on("click", function(){
     
 })
 
-$(".drawCards").on("click", async function(){
+$(".drawCards").on("click", function(){
     axios.get(deckUrl + `${deckId}/draw/?count=1`)
         .then(res => {
             console.log(res.data.cards[0].value + " of " + res.data.cards[0].suit)
