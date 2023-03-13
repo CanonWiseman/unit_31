@@ -31,10 +31,11 @@ function handleOutput(text, out) {
           process.exit(1);
         }
       });
-    } else {
+    } 
+    else {
       console.log(text);
     }
-  }
+}
   
   let path;
   let out;
